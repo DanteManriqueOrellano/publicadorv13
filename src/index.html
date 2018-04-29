@@ -48,10 +48,25 @@
 }
   </script>
   
-  <fb:login-button 
-    scope="public_profile,email"
-    onlogin="checkLoginState();">
+    <fb:login-button 
+      scope="public_profile,email"
+      onlogin="checkLoginState();">
     </fb:login-button>
   <app-root></app-root>
+  <h1>
+    Sign in
+</h1>
+
+<button onclick="login()">Sign in with Facebook!</button>
+
+<button (click)="logout()">logout</button>
+<script>
+  function logout(){
+    FB.logout(function(response) {
+    console.log(response.status);
+  });
+  }
+
+</script>
 </body>
 </html>
