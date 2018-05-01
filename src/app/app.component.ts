@@ -9,7 +9,6 @@ import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider } fro
 })
 export class AppComponent implements OnInit {
 
- 
   constructor(private authService: AuthService) { }
 
   signInWithGoogle(): void {
