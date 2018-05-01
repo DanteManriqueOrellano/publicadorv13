@@ -1,44 +1,33 @@
-import { Component } from '@angular/core';
-declare let FB: any;
+import { Component,OnInit } from '@angular/core';
+import { AuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider } from "angularx-social-login";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  fbAsyncInit()  {
-    FB.init({
-      appId      : '2055364314701838',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.12'
-    });
-    FB.getLoginStatus(function(response) {
-      
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-  loading = ()=>{
-    var js, fjs = document.getElementsByTagName('script')[0];
-     if (document.getElementById('facebook-jssdk')) {return;}
-     js = document.createElement('script'); 
-     js.id = 'facebook-jssdk';
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
+ 
+  constructor(private authService: AuthService) { }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
-  statusChangeCallback(response){
-     if(response.status === 'connected'){
-       console.log("logeado y autenticado correctamente");
-     }else{
-       console.log("not autenticado")
-     }
-   }
-   checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      console.log(response.status);
-    })
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  
+  signInWithLinkedIn(): void {
+    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+  }  
+
+  signOut(): void {
+    this.authService.signOut();
+  } 
+  ngOnInit(){
+
   }
 }
