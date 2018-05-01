@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log(FacebookLoginProvider.PROVIDER_ID)
+    console.log(this.authService.signIn(FacebookLoginProvider.PROVIDER_ID));
   }
   
   signInWithLinkedIn(): void {
