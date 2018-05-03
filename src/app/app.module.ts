@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+import { usuarioextendido } from "./usuarioextendido";
 
 let config = new AuthServiceConfig([
   {
@@ -23,6 +24,7 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
+    usuarioextendido
     
   ],
   imports: [

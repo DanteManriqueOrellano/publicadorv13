@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { AuthService,SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider } from "angularx-social-login";
-
+import { usuarioextendido } from "./usuarioextendido";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +9,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider } fro
 })
 export class AppComponent implements OnInit {
   user:SocialUser;
+  usuario:usuarioextendido;
   constructor(private authService: AuthService) { }
 
   
@@ -23,9 +24,14 @@ export class AppComponent implements OnInit {
     this.authService.signOut();
   } 
   ngOnInit(){
-    this.authService.authState.subscribe((user) => {
+    /*this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log(this.user)
+    });*/
+
+    this.authService.authState.subscribe((usuario) => {
+      this.user = usuario;
+      console.log(usuario)
     });
 
   }
